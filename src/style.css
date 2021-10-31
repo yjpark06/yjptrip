@@ -31,7 +31,7 @@ body, button, a {
 
 .cont-main, .cont {
     position: relative;
-    top: 60%;
+    top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%); /* 중앙 정렬 코드 */
     text-align: center;
