@@ -1,0 +1,256 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* index.html */
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body, button, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* 배경 스타일 영상은? */
+.video-background{
+    background: #000;
+    position:  fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -99; /* 맨 뒤로 보내는 코드 */
+}
+
+.video-foreground,
+.video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 유튜브 영상을 클릭하지 못하게 하는 코드 */
+}
+
+.cont-main, .cont {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%); /* 중앙 정렬 코드 */
+    text-align: center;
+}
+
+.cont-main {
+    display: inline-block;
+}
+
+.tit {
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 28px;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.cont-main .img-slide {
+    position: relative;
+    width: 390px;
+    height: 390px;
+}
+
+.cont-main .img-slide .img-slide-item {
+    position: absolute;
+    display: none; /* 전부 다 안보이게 한 다음 액티브 된 것만 보여주기 위함? */
+    left: 62%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 400px;
+    height: 400px;
+}
+
+.cont-main .img-slide .img-slide-item.active {
+    display: inline-block;
+}
+
+.btn-test-start, .btn-start {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: #000000;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
+.btn-test-start:hover, .btn-start:hover{
+    transform: scale(1.1);
+}
+
+.cont {
+    display: none;
+}
+
+.cont .webcam-empty {
+    width: 500px;
+    height: 500px;
+    background: #F2F2F2;
+    border: 2px solid #828282;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.cont .webcam-empty span {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #828282;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;    
+}
+
+.btn-start:hover{
+    text-decoration: underline;
+}
+
+.cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    display: none;
+}
+
+.cover img {
+    display: block;
+    position: relative;
+    width: 187px;
+    height: 187px;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* success.html */
+.cont-card {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    justify-content: center; /* 가로 정렬 */
+    perspective: 800px;
+}
+
+.item-card {
+    position: relative;
+    transform: scale(0.01) rotateY(720deg);
+    transform-style: preserve-3d; /* 3D로 카드 돌림 */
+    transition: 1.2s;
+    width: 330px;
+    padding: 40px 30px;
+    background: #F2994A;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.id-card-active .item-card {
+    transform: scale(1) rotateY(0deg);
+}
+
+.cont-card .card-title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 40px;
+}
+
+.cont-card .card-result {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 216px;
+    height: 216px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+    background-image: url(../assets/1.png);
+    background-size: cover;
+    margin-bottom: 37px;
+    overflow: hidden;
+}
+
+.cont-card .card-result-name {
+    position: relative;
+    font-size: 36px;
+    line-height: 36px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.share-btn, .link-return {
+    background: #fff;
+    border-radius: 10px;
+    color: #000;
+    font-weight: bold;
+    font-size: 24px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.share-btn {
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.link-return {
+    display: block;
+    text-decoration: none;
+}
+
+.share-btn:hover, .link-return:hover {
+    text-decoration: underline;
+}
+
+.cont-card.id-card-active .item-card:hover {
+    background: #f96167;
+    transform: scale(1.1) rotateZ(3deg);
+}
+
+
+.fail .item-card {
+    background: #828282;    
+}
+
+.id-card-active.fail .item-card {
+    animation-duration: .3s;
+    animation-name: animation-fail;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animation-fail {
+    0%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(-20px);
+    }
+    40%{
+        transform: translateX(20px);
+    }
+    60%{
+        transform: translateX(-20px);
+    }
+    80%{
+        transform: translateX(20px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
