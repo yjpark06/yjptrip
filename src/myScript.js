@@ -30,4 +30,4 @@ function imageSlide() {
     }
 }
 
-setInterval(imageSlide, 600);
+setInterval(imageSlide, 1000);
