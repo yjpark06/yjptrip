@@ -229,7 +229,7 @@ body, button, a {
 
 .cont-card.id-card-active .item-card:hover {
     background: #e6ff09;
-    transform: scale(1.1) rotateY(360deg);
+    transform: scale(1.1) rotateY(0deg);
 }
 
 
